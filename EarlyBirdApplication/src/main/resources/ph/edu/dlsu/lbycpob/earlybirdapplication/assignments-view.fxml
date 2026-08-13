@@ -62,6 +62,7 @@
                            style="-fx-font-size: 14px;"/>
 
                     <Button text="View"
+                            onAction="#handleView"
                             prefWidth="90.0"
                             prefHeight="30.0"/>
 
@@ -96,6 +97,7 @@
                            style="-fx-font-size: 14px;"/>
 
                     <Button text="View"
+                            onAction="#handleView"
                             prefWidth="90.0"
                             prefHeight="30.0"/>
 
@@ -130,6 +132,7 @@
                            style="-fx-font-size: 14px;"/>
 
                     <Button text="View"
+                            onAction="#handleView"
                             prefWidth="90.0"
                             prefHeight="30.0"/>
 
