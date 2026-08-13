@@ -8,11 +8,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class EarlyBirdApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(EarlyBirdApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                EarlyBirdApplication.class.getResource("home-view.fxml")
+        );
+
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+
+        stage.setTitle("EarlyBird");
         stage.setScene(scene);
         stage.show();
     }
