@@ -1,14 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.FocusController"
+            prefWidth="600.0"
+            prefHeight="700.0"
+            style="-fx-background-color: #1f1f1f;">
+
+    <VBox alignment="TOP_CENTER"
+          spacing="20.0"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.bottomAnchor="30.0"
+          AnchorPane.leftAnchor="40.0"
+          AnchorPane.rightAnchor="40.0">
+
+        <!-- Back Button -->
+        <Button text="Back"
+                style="-fx-background-color: transparent;
+                       -fx-border-color: #888888;
+                       -fx-text-fill: white;
+                       -fx-border-radius: 5;
+                       -fx-background-radius: 5;"
+                maxWidth="70.0"
+                alignment="CENTER_LEFT"/>
+
+        <!-- Title -->
+        <Label text="Focus Timer"
+               style="-fx-text-fill: white;
+                      -fx-font-size: 32px;
+                      -fx-font-weight: bold;"/>
+
+        <!-- Timer Mode Buttons -->
+        <HBox alignment="CENTER"
+              spacing="10.0">
+
+            <Button text="Pomodoro"
+                    onAction="#handlePomodoro"
+                    prefWidth="100.0"
+                    prefHeight="40.0"
+                    style="-fx-background-color: #2d2d2d;
+                           -fx-border-color: #777777;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+            <Button text="Custom"
+                    onAction="#handleCustom"
+                    prefWidth="100.0"
+                    prefHeight="40.0"
+                    style="-fx-background-color: #2d2d2d;
+                           -fx-border-color: #777777;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+            <Button text="Short Break"
+                    onAction="#handleShortBreak"
+                    prefWidth="100.0"
+                    prefHeight="40.0"
+                    style="-fx-background-color: #2d2d2d;
+                           -fx-border-color: #777777;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+        </HBox>
+
+        <!-- Timer Area -->
+        <VBox alignment="CENTER"
+              spacing="15.0"
+              prefHeight="300.0"
+              style="-fx-border-color: #555555;
+                     -fx-border-width: 1;
+                     -fx-background-color: #222222;">
+
+            <Label fx:id="durationLabel"
+                   text="25 minutes"
+                   style="-fx-text-fill: #aaaaaa;
+                          -fx-font-size: 16px;"/>
+
+            <Label fx:id="actualTimerLabel"
+                   text="25:00"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 64px;
+                          -fx-font-weight: bold;"/>
+
+            <!-- Custom Duration -->
+            <HBox spacing="10.0"
+                  alignment="CENTER">
+
+                <Spinner fx:id="minutesSpinner"
+                         editable="true"
+                         prefWidth="90.0"
+                         visible="false"/>
+
+                <Label text=":"
+                       style="-fx-text-fill: white;
+                              -fx-font-size: 24px;"/>
+
+                <Spinner fx:id="secondsSpinner"
+                         editable="true"
+                         prefWidth="90.0"
+                         visible="false"/>
+
+            </HBox>
+
+            <Label text="Task Title"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 18px;"/>
+
+        </VBox>
+
+        <!-- Control Buttons -->
+        <HBox alignment="CENTER"
+              spacing="15.0">
+
+            <Button text="Reset"
+                    onAction="#handleReset"
+                    prefWidth="100.0"
+                    prefHeight="50.0"
+                    style="-fx-background-color: #252525;
+                           -fx-border-color: #888888;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+            <Button fx:id="startPauseButton"
+                    text="▶ / II"
+                    onAction="#handleStartPause"
+                    prefWidth="120.0"
+                    prefHeight="50.0"
+                    style="-fx-background-color: #252525;
+                           -fx-border-color: #888888;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+            <Button text="Skip"
+                    onAction="#handleSkip"
+                    prefWidth="100.0"
+                    prefHeight="50.0"
+                    style="-fx-background-color: #252525;
+                           -fx-border-color: #888888;
+                           -fx-text-fill: white;
+                           -fx-border-radius: 5;
+                           -fx-background-radius: 5;"/>
+
+        </HBox>
+
+    </VBox>
 
 </AnchorPane>
