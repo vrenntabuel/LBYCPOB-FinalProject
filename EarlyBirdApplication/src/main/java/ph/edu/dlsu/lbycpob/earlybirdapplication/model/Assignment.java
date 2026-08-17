@@ -1,6 +1,8 @@
 package ph.edu.dlsu.lbycpob.earlybirdapplication.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Assignment {
 
@@ -10,6 +12,8 @@ public class Assignment {
     private double estimatedDuration;
     private String priority;
     private String description;
+    private List<Subtask> subtasks;
+
 
     public Assignment(String title,
                       String subject,
@@ -24,6 +28,7 @@ public class Assignment {
         this.estimatedDuration = estimatedDuration;
         this.priority = priority;
         this.description = description;
+        this.subtasks = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -49,4 +54,13 @@ public class Assignment {
     public String getDescription() {
         return description;
     }
+
+    public List<Subtask> getSubtasks() {
+        return subtasks;
+    }
+
+    public void addSubtask(Subtask subtask) {
+        subtasks.add(subtask);
+    }
+
 }
