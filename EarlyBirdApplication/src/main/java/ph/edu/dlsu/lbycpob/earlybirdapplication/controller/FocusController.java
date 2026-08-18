@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.util.Duration;
 
 public class FocusController {
@@ -35,8 +36,13 @@ public class FocusController {
     @FXML
     public void initialize() {
 
-        minutesSpinner.getValueFactory().setValue(0);
-        secondsSpinner.getValueFactory().setValue(0);
+        minutesSpinner.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 999, 0)
+        );
+
+        secondsSpinner.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0)
+        );
 
         updateDisplay();
 

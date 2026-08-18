@@ -99,7 +99,8 @@
                 <Spinner fx:id="minutesSpinner"
                          editable="true"
                          prefWidth="90.0"
-                         visible="false"/>
+                         visible="false"
+                         onMouseReleased="#handleMinutesChanged"/>
 
                 <Label text=":"
                        style="-fx-text-fill: white;
@@ -108,7 +109,8 @@
                 <Spinner fx:id="secondsSpinner"
                          editable="true"
                          prefWidth="90.0"
-                         visible="false"/>
+                         visible="false"
+                         onMouseReleased="#handleSecondsChanged"/>
 
             </HBox>
 
