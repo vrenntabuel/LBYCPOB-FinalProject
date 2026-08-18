@@ -13,10 +13,11 @@
             prefHeight="700.0"
             prefWidth="1000.0">
 
+    <!-- Assignment Content -->
     <VBox spacing="20"
           AnchorPane.topAnchor="35"
           AnchorPane.rightAnchor="40"
-          AnchorPane.bottomAnchor="35"
+          AnchorPane.bottomAnchor="100"
           AnchorPane.leftAnchor="40">
 
         <Label text="EarlyBird"
@@ -39,7 +40,10 @@
                       spacing="15">
 
                     <padding>
-                        <Insets top="5" right="5" bottom="5" left="5"/>
+                        <Insets top="5"
+                                right="5"
+                                bottom="5"
+                                left="5"/>
                     </padding>
 
                 </VBox>
@@ -49,5 +53,11 @@
         </ScrollPane>
 
     </VBox>
+
+    <!-- Global Navigation -->
+    <fx:include source="navigation.fxml"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"
+                AnchorPane.bottomAnchor="0"/>
 
 </AnchorPane>
