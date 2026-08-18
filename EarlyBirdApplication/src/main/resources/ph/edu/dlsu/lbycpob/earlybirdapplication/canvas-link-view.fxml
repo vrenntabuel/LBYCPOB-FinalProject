@@ -15,10 +15,6 @@
             prefHeight="700"
             style="-fx-background-color: white;">
 
-    <!-- NAVIGATION -->
-    <top>
-        <fx:include source="navigation.fxml"/>
-    </top>
 
     <!-- CANVAS CONTENT -->
     <center>

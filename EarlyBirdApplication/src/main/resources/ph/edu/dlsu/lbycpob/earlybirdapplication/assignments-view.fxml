@@ -7,57 +7,80 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AssignmentController"
-            prefHeight="700.0"
-            prefWidth="1000.0">
+<AnchorPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AssignmentController"
+        prefWidth="1000.0"
+        prefHeight="700.0">
 
-    <!-- Assignment Content -->
-    <VBox spacing="20"
-          AnchorPane.topAnchor="35"
-          AnchorPane.rightAnchor="40"
-          AnchorPane.bottomAnchor="100"
-          AnchorPane.leftAnchor="40">
+    <VBox
+            spacing="20"
+            AnchorPane.topAnchor="0"
+            AnchorPane.rightAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0">
 
-        <Label text="EarlyBird"
-               style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+        <!-- NAVIGATION -->
 
-        <Label text="My Assignments"
-               style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+        <fx:include source="navigation.fxml"/>
 
-        <Button text="+ Add Assignment"
-                onAction="#handleAddAssignment"
-                prefWidth="180"
-                prefHeight="40"/>
+        <!-- ASSIGNMENT CONTENT -->
 
-        <ScrollPane fitToWidth="true"
+        <VBox
+                spacing="20"
+                VBox.vgrow="ALWAYS"
+                AnchorPane.leftAnchor="40"
+                AnchorPane.rightAnchor="40">
+
+            <padding>
+                <Insets
+                        top="20"
+                        right="40"
+                        bottom="20"
+                        left="40"/>
+            </padding>
+
+            <Label
+                    text="EarlyBird"
+                    style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+
+            <Label
+                    text="My Assignments"
+                    style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+            <Button
+                    text="+ Add Assignment"
+                    onAction="#handleAddAssignment"
+                    prefWidth="180"
+                    prefHeight="40"/>
+
+            <ScrollPane
+                    fitToWidth="true"
                     VBox.vgrow="ALWAYS">
 
-            <content>
+                <content>
 
-                <VBox fx:id="assignmentContainer"
-                      spacing="15">
+                    <VBox
+                            fx:id="assignmentContainer"
+                            spacing="15">
 
-                    <padding>
-                        <Insets top="5"
-                                right="5"
-                                bottom="5"
-                                left="5"/>
-                    </padding>
+                        <padding>
+                            <Insets
+                                    top="5"
+                                    right="5"
+                                    bottom="5"
+                                    left="5"/>
+                        </padding>
 
-                </VBox>
+                    </VBox>
 
-            </content>
+                </content>
 
-        </ScrollPane>
+            </ScrollPane>
+
+        </VBox>
 
     </VBox>
-
-    <!-- Global Navigation -->
-    <fx:include source="navigation.fxml"
-                AnchorPane.leftAnchor="0"
-                AnchorPane.rightAnchor="0"
-                AnchorPane.bottomAnchor="0"/>
 
 </AnchorPane>

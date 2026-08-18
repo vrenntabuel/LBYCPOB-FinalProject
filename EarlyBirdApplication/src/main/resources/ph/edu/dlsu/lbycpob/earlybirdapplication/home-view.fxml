@@ -4,34 +4,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.HomeController"
+      alignment="CENTER"
       spacing="20"
-      prefHeight="700"
-      prefWidth="1000">
+      prefHeight="700.0"
+      prefWidth="1000.0">
 
-    <!-- Main Home Content -->
+    <Label text="EarlyBird"
+           style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
 
-    <VBox alignment="CENTER"
-          spacing="20"
-          VBox.vgrow="ALWAYS">
+    <Label text="Plan early. Work smarter. Stay ahead."
+           style="-fx-font-size: 16px;"/>
 
-        <Label text="EarlyBird"
-               style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
-
-        <Label text="Plan early. Work smarter. Stay ahead."
-               style="-fx-font-size: 16px;"/>
-
-        <Button text="Get Started"
-                onAction="#handleGetStarted"
-                prefWidth="140"
-                prefHeight="40"/>
-
-    </VBox>
-
-    <!-- Navigation -->
-
-    <fx:include source="navigation.fxml"/>
+    <Button text="Get Started"
+            onAction="#handleGetStarted"
+            prefWidth="140.0"
+            prefHeight="40.0"/>
 
 </VBox>

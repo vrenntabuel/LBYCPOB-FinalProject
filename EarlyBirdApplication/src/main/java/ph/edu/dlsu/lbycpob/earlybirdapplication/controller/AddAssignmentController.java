@@ -1,20 +1,16 @@
 package ph.edu.dlsu.lbycpob.earlybirdapplication.controller;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ph.edu.dlsu.lbycpob.earlybirdapplication.model.Assignment;
-import ph.edu.dlsu.lbycpob.earlybirdapplication.service.TaskManager;
-import ph.edu.dlsu.lbycpob.earlybirdapplication.util.AppData;
 
 import java.io.IOException;
 
@@ -33,90 +29,71 @@ public class AddAssignmentController {
     private TextField durationField;
 
     @FXML
-    private ComboBox<String> priorityBox;
+    private ComboBox<String> priorityComboBox;
 
     @FXML
     private TextArea descriptionField;
 
     @FXML
     public void initialize() {
-        priorityBox.getItems().addAll("Low", "Medium", "High");
+
+        priorityComboBox.getItems().addAll(
+                "Low",
+                "Medium",
+                "High"
+        );
     }
 
     @FXML
-    private void handleAddAssignment(ActionEvent event) throws IOException {
+    private void handleAddAssignment(ActionEvent event) {
 
-        String title = titleField.getText().trim();
-        String subject = subjectField.getText().trim();
-        String durationText = durationField.getText().trim();
-
-        if (title.isEmpty()
-                || subject.isEmpty()
-                || dueDatePicker.getValue() == null
-                || durationText.isEmpty()
-                || priorityBox.getValue() == null) {
-
-            showAlert("Please complete all required fields.");
-            return;
-        }
-
-        double duration;
-
-        try {
-            duration = Double.parseDouble(durationText);
-
-            if (duration <= 0) {
-                showAlert("Duration must be greater than 0.");
-                return;
-            }
-
-        } catch (NumberFormatException e) {
-            showAlert("Estimated duration must be a number.");
-            return;
-        }
-
-        Assignment assignment = new Assignment(
-                title,
-                subject,
-                dueDatePicker.getValue(),
-                duration,
-                priorityBox.getValue(),
-                descriptionField.getText().trim()
-        );
-
-        AppData.addAssignment(assignment);
-
-        TaskManager.addAssignment(assignment);
-
-        System.out.println("Assignment saved: " + assignment.getTitle());
+        /*
+         * KEEP YOUR EXISTING ASSIGNMENT CREATION CODE HERE.
+         *
+         * After successfully adding the assignment,
+         * return to the Assignment page.
+         */
 
         goToAssignments(event);
     }
 
-    private void goToAssignments(ActionEvent event) throws IOException {
+    @FXML
+    private void handleCancel(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "/ph/edu/dlsu/lbycpob/earlybirdapplication/assignments-view.fxml"
-                )
-        );
-
-        Scene scene = new Scene(loader.load(), 1000, 700);
-
-        Stage stage = (Stage) ((Node) event.getSource())
-                .getScene()
-                .getWindow();
-
-        stage.setScene(scene);
-        stage.setTitle("EarlyBird - Assignments");
-        stage.show();
+        goToAssignments(event);
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Invalid Assignment");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private void goToAssignments(ActionEvent event) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/ph/edu/dlsu/lbycpob/earlybirdapplication/"
+                                    + "assignments-view.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage)
+                    ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(
+                    new Scene(root, 1000, 700)
+            );
+
+            stage.setTitle(
+                    "EarlyBird - Assignments"
+            );
+
+            stage.show();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 }

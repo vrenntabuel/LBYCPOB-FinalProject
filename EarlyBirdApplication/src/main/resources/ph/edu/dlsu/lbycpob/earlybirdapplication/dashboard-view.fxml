@@ -1,72 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.DashboardController"
             prefWidth="1000.0"
             prefHeight="700.0">
 
-    <top>
-        <VBox spacing="5">
-            <padding>
-                <Insets top="20" right="25" bottom="20" left="25"/>
-            </padding>
-
-            <Label text="EarlyBird"
-                   style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
-
-            <Label text="Your productivity dashboard"
-                   style="-fx-font-size: 14px;"/>
-        </VBox>
-    </top>
-
-    <left>
-        <VBox spacing="10">
-            <padding>
-                <Insets top="20" right="15" bottom="20" left="20"/>
-            </padding>
-
-            <Label text="Navigation"
-                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-            <Button text="Dashboard"
-                    prefWidth="150"/>
-
-            <Button text="Assignments"
-                    prefWidth="150"
-                    onAction="#handleAssignments"/>
-
-            <Button text="Calendar"
-                    prefWidth="150"
-                    onAction="#handleCalendar"/>
-
-            <Button text="Focus"
-                    prefWidth="150"
-                    onAction="#handleFocus"/>
-
-            <Button text="Task Breakdown"
-                    prefWidth="150"
-                    onAction="#handleTaskBreakdown"/>
-        </VBox>
-    </left>
-
     <center>
+
         <VBox alignment="CENTER"
               spacing="15">
 
+            <padding>
+                <Insets top="30"
+                        right="30"
+                        bottom="30"
+                        left="30"/>
+            </padding>
+
+            <Label text="EarlyBird"
+                   style="-fx-font-size: 28px;
+                          -fx-font-weight: bold;"/>
+
+            <Label text="Your productivity dashboard"
+                   style="-fx-font-size: 14px;"/>
+
             <Label text="Welcome to your Dashboard"
-                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                   style="-fx-font-size: 24px;
+                          -fx-font-weight: bold;"/>
 
             <Label text="Your tasks, calendar, and deadline risks will appear here."/>
 
         </VBox>
+
     </center>
 
 </BorderPane>

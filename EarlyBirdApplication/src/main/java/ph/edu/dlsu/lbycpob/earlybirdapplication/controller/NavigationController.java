@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,9 +12,12 @@ import java.io.IOException;
 
 public class NavigationController {
 
+    private static final String BASE_PATH =
+            "/ph/edu/dlsu/lbycpob/earlybirdapplication/";
+
     @FXML
     private void goHome(ActionEvent event) {
-        navigate(event, "home-view.fxml", "EarlyBird - Home");
+        navigate(event, "home-view.fxml", "EarlyBird");
     }
 
     @FXML
@@ -38,30 +42,34 @@ public class NavigationController {
 
     private void navigate(
             ActionEvent event,
-            String fxmlFile,
+            String fileName,
             String title) {
 
         try {
 
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/ph/edu/dlsu/lbycpob/earlybirdapplication/"
-                                    + fxmlFile
-                    )
+                    getClass().getResource(BASE_PATH + fileName)
             );
 
-            Scene scene = new Scene(loader.load());
+            Parent root = loader.load();
 
-            Stage stage =
-                    (Stage) ((Node) event.getSource())
+            Stage stage = (Stage)
+                    ((Node) event.getSource())
                             .getScene()
                             .getWindow();
+
+            Scene scene = new Scene(root, 1000, 700);
 
             stage.setScene(scene);
             stage.setTitle(title);
             stage.show();
 
-        } catch (IOException e) {
+        } catch (IOException | RuntimeException e) {
+
+            System.err.println(
+                    "Unable to navigate to: " + fileName
+            );
+
             e.printStackTrace();
         }
     }

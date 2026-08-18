@@ -12,11 +12,18 @@ import ph.edu.dlsu.lbycpob.earlybirdapplication.model.Assignment;
 import ph.edu.dlsu.lbycpob.earlybirdapplication.service.RiskCalculator;
 import ph.edu.dlsu.lbycpob.earlybirdapplication.service.TaskManager;
 
+import javafx.scene.control.Button;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.model.Assignment;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.service.TaskManager;
+
+import java.util.List;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+
 
 public class CalendarController {
 
@@ -136,9 +143,19 @@ public class CalendarController {
         }
 
         // 6 fixed rows
-        for (int i = 0; i < 6; i++) {
+        // 7 rows:
+// row 0 = weekday headers
+// rows 1-6 = calendar dates
+        for (int i = 0; i < 7; i++) {
+
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(16.6667);
+
+            if (i == 0) {
+                row.setPrefHeight(30);
+            } else {
+                row.setPrefHeight(75);
+            }
+
             monthGrid.getRowConstraints().add(row);
         }
 
@@ -176,23 +193,23 @@ public class CalendarController {
             int column = position % 7;
             int row = (position / 7) + 1;
 
-            VBox cell = new VBox(5);
+            VBox cell = new VBox(3);
 
             cell.setAlignment(Pos.TOP_LEFT);
             cell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
             cell.setStyle(
                     "-fx-border-color: #dddddd;" +
-                            "-fx-border-radius: 6;" +
-                            "-fx-background-radius: 6;" +
-                            "-fx-padding: 8;" +
-                            "-fx-background-color: white;"
+                    "-fx-border-radius: 6;" +
+                    "-fx-background-radius: 6;" +
+                    "-fx-padding: 6;" +
+                    "-fx-background-color: white;"
             );
 
             Label number = new Label(String.valueOf(dayNumber));
 
             number.setStyle(
-                    "-fx-font-size: 14px;" +
+                    "-fx-font-size: 13px;" +
                             "-fx-font-weight: bold;"
             );
 
@@ -207,24 +224,17 @@ public class CalendarController {
 
     private void addMonthEvent(VBox cell, LocalDate date) {
 
-        if (date.equals(LocalDate.of(2025, 5, 7))) {
-            addSmallEvent(cell, "• Quiz");
-        }
+        List<Assignment> assignments = TaskManager.getAssignments();
 
-        if (date.equals(LocalDate.of(2025, 5, 10))) {
-            addSmallEvent(cell, "• Report");
-        }
+        for (Assignment assignment : assignments) {
 
-        if (date.equals(LocalDate.of(2025, 5, 14))) {
-            addSmallEvent(cell, "• Lab");
-        }
+            if (assignment.getDueDate().equals(date)) {
 
-        if (date.equals(LocalDate.of(2025, 5, 22))) {
-            addSmallEvent(cell, "• Exam");
-        }
-
-        if (date.equals(LocalDate.of(2025, 5, 25))) {
-            addSmallEvent(cell, "• Project Due");
+                addSmallEvent(
+                        cell,
+                        "• " + assignment.getTitle()
+                );
+            }
         }
     }
 
@@ -232,8 +242,14 @@ public class CalendarController {
 
         Label event = new Label(text);
 
-        event.setWrapText(true);
-        event.setStyle("-fx-font-size: 11px;");
+        event.setWrapText(false);
+        event.setMaxWidth(Double.MAX_VALUE);
+
+        event.setEllipsisString("...");
+
+        event.setStyle(
+                "-fx-font-size: 10px;"
+        );
 
         cell.getChildren().add(event);
     }
@@ -274,7 +290,7 @@ public class CalendarController {
 
             LocalDate date = monday.plusDays(day);
 
-            VBox column = new VBox(10);
+            VBox column = new VBox(5);
 
             column.setAlignment(Pos.TOP_CENTER);
             column.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -282,7 +298,7 @@ public class CalendarController {
             column.setStyle(
                     "-fx-border-color: #dddddd;" +
                             "-fx-border-radius: 6;" +
-                            "-fx-padding: 10;"
+                            "-fx-padding: 6;"
             );
 
             Label header = new Label(
@@ -311,26 +327,17 @@ public class CalendarController {
 
     private void addWeekEvents(VBox column, LocalDate date) {
 
-        if (date.equals(LocalDate.of(2025, 5, 19))) {
-            addWeekEvent(column, "Study Session");
-            addWeekEvent(column, "Lab Work");
-        }
+        List<Assignment> assignments = TaskManager.getAssignments();
 
-        if (date.equals(LocalDate.of(2025, 5, 21))) {
-            addWeekEvent(column, "Study Session");
-            addWeekEvent(column, "Quiz Prep");
-        }
+        for (Assignment assignment : assignments) {
 
-        if (date.equals(LocalDate.of(2025, 5, 22))) {
-            addWeekEvent(column, "Math Lecture");
-        }
+            if (assignment.getDueDate().equals(date)) {
 
-        if (date.equals(LocalDate.of(2025, 5, 24))) {
-            addWeekEvent(column, "English Class");
-        }
-
-        if (date.equals(LocalDate.of(2025, 5, 25))) {
-            addWeekEvent(column, "Assignment Time");
+                addWeekEvent(
+                        column,
+                        assignment.getTitle()
+                );
+            }
         }
     }
 

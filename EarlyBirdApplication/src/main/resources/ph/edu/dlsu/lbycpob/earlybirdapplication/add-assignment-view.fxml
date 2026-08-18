@@ -8,49 +8,90 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AddAssignmentController"
-      spacing="12"
-      prefWidth="1000"
-      prefHeight="700"
-      style="-fx-background-color: white;">
+<VBox
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AddAssignmentController"
+        prefWidth="1000.0"
+        prefHeight="700.0">
 
-    <padding>
-        <Insets top="35" right="50" bottom="35" left="50"/>
-    </padding>
+    <!-- NAVIGATION -->
 
-    <Label text="New Assignment"
-           style="-fx-font-size: 30px; -fx-font-weight: bold;"/>
+    <fx:include source="navigation.fxml"/>
 
-    <Label text="Title"/>
-    <TextField fx:id="titleField"
-               promptText="Enter assignment title"/>
+    <!-- CONTENT -->
 
-    <Label text="Subject"/>
-    <TextField fx:id="subjectField"
-               promptText="Enter subject"/>
+    <VBox
+            spacing="12"
+            VBox.vgrow="ALWAYS">
 
-    <Label text="Due Date"/>
-    <DatePicker fx:id="dueDatePicker"/>
+        <padding>
+            <Insets
+                    top="30"
+                    right="50"
+                    bottom="30"
+                    left="50"/>
+        </padding>
 
-    <Label text="Estimated Duration"/>
-    <TextField fx:id="durationField"
-               promptText="Hours"/>
+        <Label
+                text="New Assignment"
+                style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
 
-    <Label text="Priority"/>
-    <ComboBox fx:id="priorityBox"
-              promptText="Select priority"/>
+        <Label text="Title"/>
 
-    <Label text="Description (optional)"/>
-    <TextArea fx:id="descriptionField"
-              promptText="Enter description"
-              prefRowCount="3"/>
+        <TextField
+                fx:id="titleField"
+                promptText="Enter assignment title"/>
 
-    <Button text="Add Assignment"
-            onAction="#handleAddAssignment"
-            prefWidth="180"
-            prefHeight="40"/>
+        <Label text="Subject"/>
+
+        <TextField
+                fx:id="subjectField"
+                promptText="Enter subject"/>
+
+        <Label text="Due Date"/>
+
+        <DatePicker
+                fx:id="dueDatePicker"/>
+
+        <Label text="Estimated Duration"/>
+
+        <TextField
+                fx:id="durationField"
+                promptText="Hours"/>
+
+        <Label text="Priority"/>
+
+        <ComboBox
+                fx:id="priorityComboBox"
+                promptText="Select priority"
+                prefWidth="160"/>
+
+        <Label text="Description (optional)"/>
+
+        <TextArea
+                fx:id="descriptionField"
+                promptText="Enter description"
+                prefHeight="100"/>
+
+        <HBox spacing="15">
+
+            <Button
+                    text="Add Assignment"
+                    onAction="#handleAddAssignment"
+                    prefWidth="180"
+                    prefHeight="45"/>
+
+            <Button
+                    text="Cancel"
+                    onAction="#handleCancel"
+                    prefWidth="120"
+                    prefHeight="45"/>
+
+        </HBox>
+
+    </VBox>
 
 </VBox>

@@ -12,6 +12,11 @@ import java.io.IOException;
 public class DashboardController {
 
     @FXML
+    public void initialize() {
+        // Dashboard initialization
+    }
+
+    @FXML
     private void handleAssignments(ActionEvent event) throws IOException {
         openView(event, "assignments-view.fxml", "EarlyBird - Assignments");
     }

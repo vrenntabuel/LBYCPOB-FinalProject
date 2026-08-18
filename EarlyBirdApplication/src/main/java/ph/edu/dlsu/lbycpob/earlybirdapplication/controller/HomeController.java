@@ -1,8 +1,10 @@
 package ph.edu.dlsu.lbycpob.earlybirdapplication.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -10,22 +12,36 @@ import java.io.IOException;
 
 public class HomeController {
 
-    public void handleGetStarted(ActionEvent event) throws IOException {
+    @FXML
+    private void handleGetStarted(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "/ph/edu/dlsu/lbycpob/earlybirdapplication/canvas-link-view.fxml"
-                )
-        );
+        try {
 
-        Scene scene = new Scene(loader.load());
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/ph/edu/dlsu/lbycpob/earlybirdapplication/"
+                                    + "canvas-link-view.fxml"
+                    )
+            );
 
-        Stage stage = (Stage) ((Node) event.getSource())
-                .getScene()
-                .getWindow();
+            Parent root = loader.load();
 
-        stage.setScene(scene);
-        stage.setTitle("EarlyBird - Canvas Calendar");
-        stage.show();
+            Stage stage = (Stage)
+                    ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(
+                    new Scene(root, 1000, 700)
+            );
+
+            stage.setTitle("EarlyBird");
+
+            stage.show();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 }

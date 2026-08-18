@@ -162,11 +162,5 @@
     </VBox>
 
 
-    <!-- Global Navigation -->
-
-    <fx:include source="navigation.fxml"
-                AnchorPane.leftAnchor="0"
-                AnchorPane.rightAnchor="0"
-                AnchorPane.bottomAnchor="0"/>
 
 </AnchorPane>

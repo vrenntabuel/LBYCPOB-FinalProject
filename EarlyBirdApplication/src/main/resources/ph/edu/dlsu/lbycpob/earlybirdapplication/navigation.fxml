@@ -3,33 +3,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.NavigationController"
-      spacing="10"
-      alignment="CENTER_LEFT"
-      style="-fx-background-color: #f5f5f5;
-             -fx-border-color: #dddddd;
-             -fx-padding: 15 25 15 25;">
+<HBox
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.NavigationController"
+        spacing="10"
+        alignment="CENTER_LEFT"
+        prefHeight="60.0"
+        style="-fx-background-color: #1f1f1f; -fx-padding: 15;">
 
-    <Button text="Home"
-            onAction="#goHome"
-            prefWidth="100"/>
+    <Button
+            text="Home"
+            onAction="#goHome"/>
 
-    <Button text="Assignments"
-            onAction="#goAssignments"
-            prefWidth="120"/>
+    <Button
+            text="Assignments"
+            onAction="#goAssignments"/>
 
-    <Button text="Calendar"
-            onAction="#goCalendar"
-            prefWidth="100"/>
+    <Button
+            text="Calendar"
+            onAction="#goCalendar"/>
 
-    <Button text="Focus"
-            onAction="#goFocus"
-            prefWidth="100"/>
+    <Button
+            text="Focus Timer"
+            onAction="#goFocus"/>
 
-    <Button text="Dashboard"
-            onAction="#goDashboard"
-            prefWidth="110"/>
+    <Button
+            text="Dashboard"
+            onAction="#goDashboard"/>
 
 </HBox>
