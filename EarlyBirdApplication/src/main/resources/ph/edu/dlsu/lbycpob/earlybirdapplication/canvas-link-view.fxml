@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.CanvasLinkController"
+            prefWidth="1000"
+            prefHeight="700"
+            style="-fx-background-color: white;">
+
+    <!-- NAVIGATION -->
+    <top>
+        <fx:include source="navigation.fxml"/>
+    </top>
+
+    <!-- CANVAS CONTENT -->
+    <center>
+
+        <VBox alignment="TOP_CENTER"
+              spacing="20"
+              maxWidth="820">
+
+            <padding>
+                <Insets top="55"
+                        right="40"
+                        bottom="40"
+                        left="40"/>
+            </padding>
+
+            <Label text="Link Canvas LMS Calendar"
+                   style="-fx-font-size: 32px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #26364a;"/>
+
+            <Label text="Connect your Canvas calendar to automatically bring your assignments into EarlyBird."
+                   wrapText="true"
+                   style="-fx-font-size: 17px;"/>
+
+
+            <VBox spacing="8"
+                  maxWidth="820">
+
+                <Label text="How to get your Canvas Calendar Link"
+                       style="-fx-font-size: 22px;
+                              -fx-font-weight: bold;"/>
+
+                <Label text="1. Open Canvas LMS&#10;2. Open Calendar&#10;3. Find the Calendar Feed option&#10;4. Copy your Canvas calendar URL"
+                       style="-fx-font-size: 16px;"
+                       wrapText="true"/>
+
+            </VBox>
+
+
+            <VBox spacing="8"
+                  maxWidth="820">
+
+                <Label text="Canvas Calendar Link"
+                       style="-fx-font-weight: bold;
+                              -fx-font-size: 15px;"/>
+
+                <TextField fx:id="canvasLinkField"
+                           promptText="Paste your Canvas calendar URL here"
+                           prefHeight="45"/>
+
+            </VBox>
+
+
+            <Label fx:id="statusLabel"
+                   text=""
+                   wrapText="true"
+                   style="-fx-font-size: 16px;"/>
+
+
+            <HBox alignment="CENTER"
+                  spacing="15">
+
+                <Button text="Connect Canvas"
+                        onAction="#handleConnectCanvas"
+                        prefWidth="225"
+                        prefHeight="50"/>
+
+                <Button text="Continue Without Canvas"
+                        onAction="#handleContinueWithoutCanvas"
+                        prefWidth="225"
+                        prefHeight="50"/>
+
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

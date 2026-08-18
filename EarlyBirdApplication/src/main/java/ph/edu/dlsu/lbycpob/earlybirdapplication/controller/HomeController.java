@@ -11,17 +11,21 @@ import java.io.IOException;
 public class HomeController {
 
     public void handleGetStarted(ActionEvent event) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
-                        "/ph/edu/dlsu/lbycpob/earlybirdapplication/dashboard-view.fxml"
+                        "/ph/edu/dlsu/lbycpob/earlybirdapplication/canvas-link-view.fxml"
                 )
         );
 
         Scene scene = new Scene(loader.load());
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+
         stage.setScene(scene);
-        stage.setTitle("EarlyBird - Dashboard");
+        stage.setTitle("EarlyBird - Canvas Calendar");
         stage.show();
     }
 }

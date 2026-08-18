@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,7 +11,35 @@ import java.io.IOException;
 
 public class NavigationController {
 
-    private void changeScene(String fxmlFile, ActionEvent event) {
+    @FXML
+    private void goHome(ActionEvent event) {
+        navigate(event, "home-view.fxml", "EarlyBird - Home");
+    }
+
+    @FXML
+    private void goAssignments(ActionEvent event) {
+        navigate(event, "assignments-view.fxml", "EarlyBird - Assignments");
+    }
+
+    @FXML
+    private void goCalendar(ActionEvent event) {
+        navigate(event, "calendar-view.fxml", "EarlyBird - Calendar");
+    }
+
+    @FXML
+    private void goFocus(ActionEvent event) {
+        navigate(event, "focus-view.fxml", "EarlyBird - Focus Timer");
+    }
+
+    @FXML
+    private void goDashboard(ActionEvent event) {
+        navigate(event, "dashboard-view.fxml", "EarlyBird - Dashboard");
+    }
+
+    private void navigate(
+            ActionEvent event,
+            String fxmlFile,
+            String title) {
 
         try {
 
@@ -23,52 +50,19 @@ public class NavigationController {
                     )
             );
 
-            Parent root = loader.load();
+            Scene scene = new Scene(loader.load());
 
-            Stage stage = (Stage)
-                    ((Node) event.getSource())
+            Stage stage =
+                    (Stage) ((Node) event.getSource())
                             .getScene()
                             .getWindow();
 
-            Scene scene = new Scene(root);
-
             stage.setScene(scene);
+            stage.setTitle(title);
             stage.show();
 
         } catch (IOException e) {
-
             e.printStackTrace();
-
         }
-    }
-
-    @FXML
-    private void handleHome(ActionEvent event) {
-
-        changeScene("home-view.fxml", event);
-    }
-
-    @FXML
-    private void handleAssignments(ActionEvent event) {
-
-        changeScene("assignments-view.fxml", event);
-    }
-
-    @FXML
-    private void handleCalendar(ActionEvent event) {
-
-        changeScene("calendar-view.fxml", event);
-    }
-
-    @FXML
-    private void handleFocusTimer(ActionEvent event) {
-
-        changeScene("focus-view.fxml", event);
-    }
-
-    @FXML
-    private void handleDashboard(ActionEvent event) {
-
-        changeScene("dashboard-view.fxml", event);
     }
 }
