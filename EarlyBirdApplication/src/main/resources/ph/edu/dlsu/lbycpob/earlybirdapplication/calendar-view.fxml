@@ -103,20 +103,8 @@
             <Label text="Deadline Risk Indicator"
                    style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
 
-            <HBox spacing="15"
-                  style="-fx-background-color: #f3f3f3;
-                         -fx-background-radius: 10;
-                         -fx-padding: 15;">
-
-                <Label text="Research Paper"
-                       style="-fx-font-weight: bold;"/>
-
-                <Label text="Due in 5 days"/>
-
-                <Label text="Medium Risk"
-                       style="-fx-font-weight: bold;"/>
-
-            </HBox>
+            <VBox fx:id="riskContainer"
+                  spacing="10"/>
         </VBox>
     </bottom>
 

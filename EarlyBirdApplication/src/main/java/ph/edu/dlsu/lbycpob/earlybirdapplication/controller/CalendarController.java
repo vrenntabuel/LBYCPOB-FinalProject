@@ -7,6 +7,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.model.Assignment;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.service.RiskCalculator;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.service.TaskManager;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -26,6 +30,9 @@ public class CalendarController {
     private VBox weekView;
 
     @FXML
+    private VBox riskContainer;
+
+    @FXML
     private GridPane monthGrid;
 
     @FXML
@@ -36,7 +43,9 @@ public class CalendarController {
 
     @FXML
     public void initialize() {
+
         showMonth();
+        updateRiskIndicator();
     }
 
     @FXML
@@ -193,6 +202,7 @@ public class CalendarController {
 
             monthGrid.add(cell, column, row);
         }
+        updateRiskIndicator();
     }
 
     private void addMonthEvent(VBox cell, LocalDate date) {
@@ -296,6 +306,7 @@ public class CalendarController {
 
             weekGrid.add(column, day, 0);
         }
+        updateRiskIndicator();
     }
 
     private void addWeekEvents(VBox column, LocalDate date) {
@@ -339,4 +350,78 @@ public class CalendarController {
 
         column.getChildren().add(event);
     }
+
+    private void updateRiskIndicator() {
+
+        riskContainer.getChildren().clear();
+
+        for (Assignment assignment : TaskManager.getAssignments()) {
+
+            String risk = RiskCalculator.calculateRisk(assignment);
+
+            long daysRemaining =
+                    RiskCalculator.getDaysRemaining(assignment);
+
+            HBox riskRow = new HBox(15);
+
+            riskRow.setAlignment(Pos.CENTER_LEFT);
+
+            riskRow.setStyle(
+                    "-fx-background-color: #f3f3f3;" +
+                            "-fx-background-radius: 10;" +
+                            "-fx-padding: 15;"
+            );
+
+            Label titleLabel =
+                    new Label(assignment.getTitle());
+
+            titleLabel.setStyle(
+                    "-fx-font-weight: bold;"
+            );
+
+            String dueText;
+
+            if (daysRemaining < 0) {
+
+                dueText =
+                        "Overdue by "
+                                + Math.abs(daysRemaining)
+                                + " days";
+
+            } else if (daysRemaining == 0) {
+
+                dueText = "Due today";
+
+            } else if (daysRemaining == 1) {
+
+                dueText = "Due in 1 day";
+
+            } else {
+
+                dueText =
+                        "Due in "
+                                + daysRemaining
+                                + " days";
+            }
+
+            Label dueLabel =
+                    new Label(dueText);
+
+            Label riskLabel =
+                    new Label(risk + " Risk");
+
+            riskLabel.setStyle(
+                    "-fx-font-weight: bold;"
+            );
+
+            riskRow.getChildren().addAll(
+                    titleLabel,
+                    dueLabel,
+                    riskLabel
+            );
+
+            riskContainer.getChildren().add(riskRow);
+        }
+    }
+
 }
