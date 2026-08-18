@@ -1,5 +1,6 @@
 package ph.edu.dlsu.lbycpob.earlybirdapplication.controller;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ph.edu.dlsu.lbycpob.earlybirdapplication.model.Assignment;
 import ph.edu.dlsu.lbycpob.earlybirdapplication.service.TaskManager;
+import ph.edu.dlsu.lbycpob.earlybirdapplication.util.AppData;
 
 import java.io.IOException;
 
@@ -81,6 +83,8 @@ public class AddAssignmentController {
                 priorityBox.getValue(),
                 descriptionField.getText().trim()
         );
+
+        AppData.addAssignment(assignment);
 
         TaskManager.addAssignment(assignment);
 

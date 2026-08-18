@@ -7,13 +7,56 @@ import java.util.List;
 
 public class TaskManager {
 
-    private static final List<Assignment> assignments = new ArrayList<>();
+    // =========================================================
+    // SHARED ASSIGNMENT LIST
+    // =========================================================
 
-    public static void addAssignment(Assignment assignment) {
+    private static final List<Assignment> assignments =
+            new ArrayList<>();
+
+
+    // =========================================================
+    // ADD ONE ASSIGNMENT
+    // =========================================================
+
+    public static void addAssignment(
+            Assignment assignment
+    ) {
+
+        if (assignment == null) {
+            return;
+        }
+
         assignments.add(assignment);
     }
 
+
+    // =========================================================
+    // ADD MULTIPLE ASSIGNMENTS
+    // =========================================================
+
+    public static void addAssignments(
+            List<Assignment> newAssignments
+    ) {
+
+        if (newAssignments == null) {
+            return;
+        }
+
+
+        for (Assignment assignment : newAssignments) {
+
+            addAssignment(assignment);
+        }
+    }
+
+
+    // =========================================================
+    // GET ALL ASSIGNMENTS
+    // =========================================================
+
     public static List<Assignment> getAssignments() {
+
         return assignments;
     }
 }

@@ -13,6 +13,7 @@ public class Assignment {
     private String priority;
     private String description;
     private List<Subtask> subtasks;
+    private boolean completed;
 
 
     public Assignment(String title,
@@ -61,6 +62,14 @@ public class Assignment {
 
     public void addSubtask(Subtask subtask) {
         subtasks.add(subtask);
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
 }

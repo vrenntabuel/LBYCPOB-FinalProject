@@ -88,8 +88,8 @@
 
                 <Button text="Continue Without Canvas"
                         onAction="#handleContinueWithoutCanvas"
-                        prefWidth="225"
-                        prefHeight="50"/>
+                        prefWidth="220"
+                        prefHeight="45"/>
 
             </HBox>
 
