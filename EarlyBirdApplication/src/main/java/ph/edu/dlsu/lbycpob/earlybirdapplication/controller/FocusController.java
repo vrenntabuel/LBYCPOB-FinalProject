@@ -19,6 +19,9 @@ public class FocusController {
     private Label durationLabel;
 
     @FXML
+    private Label customSeparator;
+
+    @FXML
     private Spinner<Integer> minutesSpinner;
 
     @FXML
@@ -45,6 +48,8 @@ public class FocusController {
         );
 
         updateDisplay();
+
+        hideCustomControls();
 
         timer = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> updateTimer())
@@ -96,11 +101,9 @@ public class FocusController {
         remainingSeconds = 25 * 60;
 
         durationLabel.setText("25 minutes");
-
         actualTimerLabel.setText("25:00");
 
-        minutesSpinner.setVisible(false);
-        secondsSpinner.setVisible(false);
+        hideCustomControls();
     }
 
     @FXML
@@ -111,11 +114,9 @@ public class FocusController {
         remainingSeconds = 10 * 60;
 
         durationLabel.setText("10 minutes");
-
         actualTimerLabel.setText("10:00");
 
-        minutesSpinner.setVisible(false);
-        secondsSpinner.setVisible(false);
+        hideCustomControls();
     }
 
     @FXML
@@ -125,8 +126,9 @@ public class FocusController {
 
         durationLabel.setText("Custom Duration");
 
-        minutesSpinner.setVisible(true);
-        secondsSpinner.setVisible(true);
+        showCustomControls();
+
+        updateCustomDuration();
     }
 
     @FXML
@@ -193,8 +195,7 @@ public class FocusController {
 
         startPauseButton.setText("▶ / II");
 
-        minutesSpinner.setVisible(false);
-        secondsSpinner.setVisible(false);
+        hideCustomControls();
     }
 
     @FXML
@@ -207,6 +208,30 @@ public class FocusController {
         actualTimerLabel.setText("00:00");
 
         startPauseButton.setText("▶ / II");
+    }
+
+    private void showCustomControls() {
+
+        minutesSpinner.setVisible(true);
+        minutesSpinner.setManaged(true);
+
+        secondsSpinner.setVisible(true);
+        secondsSpinner.setManaged(true);
+
+        customSeparator.setVisible(true);
+        customSeparator.setManaged(true);
+    }
+
+    private void hideCustomControls() {
+
+        minutesSpinner.setVisible(false);
+        minutesSpinner.setManaged(false);
+
+        secondsSpinner.setVisible(false);
+        secondsSpinner.setManaged(false);
+
+        customSeparator.setVisible(false);
+        customSeparator.setManaged(false);
     }
 
     private void stopTimer() {

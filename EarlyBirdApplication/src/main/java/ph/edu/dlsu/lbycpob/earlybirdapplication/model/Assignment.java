@@ -4,44 +4,38 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Assignment {
+public class Assignment extends Task {
 
-    private String title;
     private String subject;
-    private LocalDate dueDate;
     private double estimatedDuration;
     private String priority;
     private String description;
     private List<Subtask> subtasks;
-    private boolean completed;
 
+    public Assignment(
+            String title,
+            String subject,
+            LocalDate dueDate,
+            double estimatedDuration,
+            String priority,
+            String description) {
 
-    public Assignment(String title,
-                      String subject,
-                      LocalDate dueDate,
-                      double estimatedDuration,
-                      String priority,
-                      String description) {
+        super(title, dueDate);
 
-        this.title = title;
         this.subject = subject;
-        this.dueDate = dueDate;
         this.estimatedDuration = estimatedDuration;
         this.priority = priority;
         this.description = description;
         this.subtasks = new ArrayList<>();
     }
 
-    public String getTitle() {
-        return title;
+    @Override
+    public String getTaskType() {
+        return "Assignment";
     }
 
     public String getSubject() {
         return subject;
-    }
-
-    public LocalDate getDueDate() {
-        return dueDate;
     }
 
     public double getEstimatedDuration() {
@@ -63,13 +57,4 @@ public class Assignment {
     public void addSubtask(Subtask subtask) {
         subtasks.add(subtask);
     }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
 }

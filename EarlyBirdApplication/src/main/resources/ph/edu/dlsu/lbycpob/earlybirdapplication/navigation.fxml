@@ -10,26 +10,26 @@
         spacing="10"
         alignment="CENTER_LEFT"
         prefHeight="60.0"
-        style="-fx-background-color: #1f1f1f; -fx-padding: 15;">
+        style="-fx-background-color: #29251D; -fx-padding: 15;">
 
     <Button
             text="Home"
-            onAction="#goHome"/>
+            onAction="#goHome" style="-fx-background-color: transparent; -fx-text-fill: #FFFDF7; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
 
     <Button
             text="Assignments"
-            onAction="#goAssignments"/>
+            onAction="#goAssignments" style="-fx-background-color: transparent; -fx-text-fill: #FFFDF7; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
 
     <Button
             text="Calendar"
-            onAction="#goCalendar"/>
+            onAction="#goCalendar" style="-fx-background-color: transparent; -fx-text-fill: #FFFDF7; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
 
     <Button
             text="Focus Timer"
-            onAction="#goFocus"/>
+            onAction="#goFocus" style="-fx-background-color: transparent; -fx-text-fill: #FFFDF7; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
 
     <Button
             text="Dashboard"
-            onAction="#goDashboard"/>
+            onAction="#goDashboard" style="-fx-background-color: transparent; -fx-text-fill: #FFFDF7; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
 
 </HBox>

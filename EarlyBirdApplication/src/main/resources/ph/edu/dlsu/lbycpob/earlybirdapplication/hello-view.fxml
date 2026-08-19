@@ -6,11 +6,11 @@
 
 <?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.HelloController">
+      fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.HelloController" style="-fx-background-color: #FFF8E7;">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="welcomeText" style="-fx-text-fill: #29251D;"/>
+    <Button text="Hello!" onAction="#onHelloButtonClick" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 </VBox>

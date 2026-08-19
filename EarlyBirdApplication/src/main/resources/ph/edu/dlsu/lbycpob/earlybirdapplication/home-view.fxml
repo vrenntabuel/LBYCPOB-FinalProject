@@ -10,17 +10,28 @@
       alignment="CENTER"
       spacing="20"
       prefHeight="700.0"
-      prefWidth="1000.0">
+      prefWidth="1000.0"
+      style="-fx-background-color: #FFF8E7;">
 
     <Label text="EarlyBird"
-           style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+           style="-fx-font-size: 42px;
+                  -fx-font-weight: bold;
+                  -fx-text-fill: #29251D;"/>
 
     <Label text="Plan early. Work smarter. Stay ahead."
-           style="-fx-font-size: 16px;"/>
+           style="-fx-font-size: 17px;
+                  -fx-text-fill: #756F63;"/>
 
     <Button text="Get Started"
             onAction="#handleGetStarted"
-            prefWidth="140.0"
-            prefHeight="40.0"/>
+            prefWidth="160.0"
+            prefHeight="45.0"
+            style="-fx-background-color: #F4C542;
+                   -fx-text-fill: #29251D;
+                   -fx-font-size: 15px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 8;
+                   -fx-border-radius: 8;
+                   -fx-cursor: hand;"/>
 
 </VBox>

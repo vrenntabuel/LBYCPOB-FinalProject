@@ -1,43 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.DashboardController"
             prefWidth="1000.0"
-            prefHeight="700.0">
+            prefHeight="700.0" style="-fx-background-color: #FFF8E7;">
+
+    <top>
+        <fx:include source="navigation.fxml"/>
+    </top>
 
     <center>
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-border-color: transparent;">
 
-        <VBox alignment="CENTER"
-              spacing="15">
+            <content>
+                <VBox spacing="18"
+                      fillWidth="true">
 
-            <padding>
-                <Insets top="30"
-                        right="30"
-                        bottom="30"
-                        left="30"/>
-            </padding>
+                    <padding>
+                        <Insets top="25" right="40" bottom="30" left="40"/>
+                    </padding>
 
-            <Label text="EarlyBird"
-                   style="-fx-font-size: 28px;
-                          -fx-font-weight: bold;"/>
+                    <!-- HEADER -->
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="EarlyBird"
+                                   style="-fx-font-size: 30px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+                            <Label text="Your productivity dashboard"
+                                   style="-fx-font-size: 14px;; -fx-text-fill: #29251D;"/>
+                        </VBox>
 
-            <Label text="Your productivity dashboard"
-                   style="-fx-font-size: 14px;"/>
+                        <Button text="↻ Refresh"
+                                onAction="#handleRefresh"
+                                prefWidth="95"
+                                prefHeight="35" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
 
-            <Label text="Welcome to your Dashboard"
-                   style="-fx-font-size: 24px;
-                          -fx-font-weight: bold;"/>
+                    <Label text="Overview"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
-            <Label text="Your tasks, calendar, and deadline risks will appear here."/>
+                    <!-- SUMMARY CARDS -->
+                    <GridPane hgap="12" vgap="12" maxWidth="Infinity">
+                        <VBox GridPane.columnIndex="0"
+                              style="-fx-background-color: #FFFDF7; -fx-background-radius: 10; -fx-padding: 16;"
+                              prefHeight="95"
+                              GridPane.hgrow="ALWAYS">
+                            <Label text="Total Assignments"
+                                   style="-fx-font-size: 12px;; -fx-text-fill: #29251D;"/>
+                            <Label fx:id="totalAssignmentsLabel"
+                                   text="0"
+                                   style="-fx-font-size: 26px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+                        </VBox>
 
-        </VBox>
+                        <VBox GridPane.columnIndex="1"
+                              style="-fx-background-color: #FFFDF7; -fx-background-radius: 10; -fx-padding: 16;"
+                              prefHeight="95"
+                              GridPane.hgrow="ALWAYS">
+                            <Label text="Completed"
+                                   style="-fx-font-size: 12px;; -fx-text-fill: #29251D;"/>
+                            <Label fx:id="completedAssignmentsLabel"
+                                   text="0"
+                                   style="-fx-font-size: 26px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+                        </VBox>
 
+                        <VBox GridPane.columnIndex="2"
+                              style="-fx-background-color: #FFFDF7; -fx-background-radius: 10; -fx-padding: 16;"
+                              prefHeight="95"
+                              GridPane.hgrow="ALWAYS">
+                            <Label text="Due Soon"
+                                   style="-fx-font-size: 12px;; -fx-text-fill: #29251D;"/>
+                            <Label fx:id="dueSoonLabel"
+                                   text="0"
+                                   style="-fx-font-size: 26px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="3"
+                              style="-fx-background-color: #FFFDF7; -fx-background-radius: 10; -fx-padding: 16;"
+                              prefHeight="95"
+                              GridPane.hgrow="ALWAYS">
+                            <Label text="High Risk"
+                                   style="-fx-font-size: 12px;; -fx-text-fill: #29251D;"/>
+                            <Label fx:id="highRiskLabel"
+                                   text="0"
+                                   style="-fx-font-size: 26px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+                        </VBox>
+                    </GridPane>
+
+                    <!-- PROGRESS -->
+                    <VBox spacing="8"
+                          style="-fx-background-color: #FFFDF7; -fx-background-radius: 10; -fx-padding: 16;">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Assignment Progress"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"
+                                   HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="progressLabel"
+                                   text="0 of 0 assignments completed"
+                                   style="-fx-font-size: 12px;; -fx-text-fill: #29251D;"/>
+                        </HBox>
+
+                        <ProgressBar fx:id="progressBar"
+                                     progress="0"
+                                     maxWidth="Infinity"
+                                     prefHeight="14"/>
+                    </VBox>
+
+                    <!-- CONTENT COLUMNS -->
+                    <GridPane hgap="18" vgap="18">
+
+                        <VBox GridPane.columnIndex="0"
+                              spacing="10"
+                              prefWidth="430"
+                              GridPane.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Upcoming Assignments"
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"
+                                       HBox.hgrow="ALWAYS"/>
+                                <Button text="View All"
+                                        onAction="#handleAssignments" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                            </HBox>
+
+                            <VBox fx:id="upcomingContainer"
+                                  spacing="8"/>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="1"
+                              spacing="10"
+                              prefWidth="430"
+                              GridPane.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Deadline Risks"
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"
+                                       HBox.hgrow="ALWAYS"/>
+                                <Button text="Calendar"
+                                        onAction="#handleCalendar" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                            </HBox>
+
+                            <VBox fx:id="riskContainer"
+                                  spacing="8"/>
+                        </VBox>
+                    </GridPane>
+
+                    <!-- QUICK ACTIONS -->
+                    <VBox spacing="10">
+                        <Label text="Quick Actions"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
+
+                        <HBox spacing="10">
+                            <Button text="Assignments"
+                                    onAction="#handleAssignments"
+                                    prefWidth="140"
+                                    prefHeight="38" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                            <Button text="Calendar"
+                                    onAction="#handleCalendar"
+                                    prefWidth="140"
+                                    prefHeight="38" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                            <Button text="Focus Timer"
+                                    onAction="#handleFocus"
+                                    prefWidth="140"
+                                    prefHeight="38" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
     </center>
-
 </BorderPane>

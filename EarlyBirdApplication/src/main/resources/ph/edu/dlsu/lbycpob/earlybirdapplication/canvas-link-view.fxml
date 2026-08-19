@@ -13,7 +13,7 @@
             fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.CanvasLinkController"
             prefWidth="1000"
             prefHeight="700"
-            style="-fx-background-color: white;">
+            style="-fx-background-color: #FFF8E7;">
 
 
     <!-- CANVAS CONTENT -->
@@ -31,24 +31,21 @@
             </padding>
 
             <Label text="Link Canvas LMS Calendar"
-                   style="-fx-font-size: 32px;
-                          -fx-font-weight: bold;
-                          -fx-text-fill: #26364a;"/>
+                   style="-fx-font-size: 32px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
             <Label text="Connect your Canvas calendar to automatically bring your assignments into EarlyBird."
                    wrapText="true"
-                   style="-fx-font-size: 17px;"/>
+                   style="-fx-font-size: 17px;; -fx-text-fill: #29251D;"/>
 
 
             <VBox spacing="8"
                   maxWidth="820">
 
                 <Label text="How to get your Canvas Calendar Link"
-                       style="-fx-font-size: 22px;
-                              -fx-font-weight: bold;"/>
+                       style="-fx-font-size: 22px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
                 <Label text="1. Open Canvas LMS&#10;2. Open Calendar&#10;3. Find the Calendar Feed option&#10;4. Copy your Canvas calendar URL"
-                       style="-fx-font-size: 16px;"
+                       style="-fx-font-size: 16px;; -fx-text-fill: #29251D;"
                        wrapText="true"/>
 
             </VBox>
@@ -58,12 +55,11 @@
                   maxWidth="820">
 
                 <Label text="Canvas Calendar Link"
-                       style="-fx-font-weight: bold;
-                              -fx-font-size: 15px;"/>
+                       style="-fx-font-weight: bold; -fx-font-size: 15px;; -fx-text-fill: #29251D;"/>
 
                 <TextField fx:id="canvasLinkField"
                            promptText="Paste your Canvas calendar URL here"
-                           prefHeight="45"/>
+                           prefHeight="45" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
             </VBox>
 
@@ -71,7 +67,7 @@
             <Label fx:id="statusLabel"
                    text=""
                    wrapText="true"
-                   style="-fx-font-size: 16px;"/>
+                   style="-fx-font-size: 16px;; -fx-text-fill: #29251D;"/>
 
 
             <HBox alignment="CENTER"
@@ -80,12 +76,12 @@
                 <Button text="Connect Canvas"
                         onAction="#handleConnectCanvas"
                         prefWidth="225"
-                        prefHeight="50"/>
+                        prefHeight="50" style="-fx-background-color: #F4C542; -fx-text-fill: #29251D; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 
                 <Button text="Continue Without Canvas"
                         onAction="#handleContinueWithoutCanvas"
                         prefWidth="220"
-                        prefHeight="45"/>
+                        prefHeight="45" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 
             </HBox>
 

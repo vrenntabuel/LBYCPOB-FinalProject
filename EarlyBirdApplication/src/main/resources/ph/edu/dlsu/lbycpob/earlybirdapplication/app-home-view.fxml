@@ -9,15 +9,15 @@
       alignment="CENTER"
       spacing="20"
       prefHeight="700"
-      prefWidth="1000">
+      prefWidth="1000" style="-fx-background-color: #FFF8E7;">
 
     <Label text="Welcome to EarlyBird"
-           style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+           style="-fx-font-size: 32px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
     <Label text="Plan early. Work smarter. Stay ahead."
-           style="-fx-font-size: 16px;"/>
+           style="-fx-font-size: 16px;; -fx-text-fill: #29251D;"/>
 
     <Label text="Manage your assignments, calendar, tasks, and focus sessions in one place."
-           style="-fx-font-size: 15px;"/>
+           style="-fx-font-size: 15px;; -fx-text-fill: #29251D;"/>
 
 </VBox>

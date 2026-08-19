@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,6 +32,10 @@ public class AssignmentController {
 
         for (Assignment assignment : TaskManager.getAssignments()) {
 
+            if (assignment.isCompleted()) {
+                continue;
+            }
+
             VBox card = new VBox(8);
 
             card.setStyle(
@@ -40,51 +45,93 @@ public class AssignmentController {
                             "-fx-padding: 18;"
             );
 
-            Label title =
-                    new Label(assignment.getTitle());
+            Label title = new Label(assignment.getTitle());
 
             title.setStyle(
                     "-fx-font-size: 18px;" +
                             "-fx-font-weight: bold;"
             );
 
-            Label subject =
-                    new Label(
-                            "Subject: " +
-                                    assignment.getSubject()
-                    );
+            Label subject = new Label(
+                    "Subject: " + assignment.getSubject()
+            );
 
-            Label dueDate =
-                    new Label(
-                            "Due: " +
-                                    assignment.getDueDate()
-                    );
+            Label dueDate = new Label(
+                    "Due: " + assignment.getDueDate()
+            );
 
-            Label duration =
-                    new Label(
-                            "Estimated: " +
-                                    assignment.getEstimatedDuration() +
-                                    " hours"
-                    );
+            Label duration = new Label(
+                    "Estimated: " +
+                            assignment.getEstimatedDuration() +
+                            " hours"
+            );
 
-            Label priority =
-                    new Label(
-                            "Priority: " +
-                                    assignment.getPriority()
-                    );
+            Label priority = new Label(
+                    "Priority: " + assignment.getPriority()
+            );
+
+            Label status = new Label(
+                    assignment.isCompleted()
+                            ? "Status: Completed"
+                            : "Status: In Progress"
+            );
+
+            Button detailsButton = new Button("View Details");
+
+            detailsButton.setOnAction(event -> {
+                try {
+                    openAssignmentDetails(event, assignment);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
 
             card.getChildren().addAll(
                     title,
                     subject,
                     dueDate,
                     duration,
-                    priority
+                    priority,
+                    status,
+                    detailsButton
             );
 
             assignmentContainer
                     .getChildren()
                     .add(card);
         }
+    }
+
+    private void openAssignmentDetails(
+            ActionEvent event,
+            Assignment assignment
+    ) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/ph/edu/dlsu/lbycpob/earlybirdapplication/"
+                                + "assignment-details-view.fxml"
+                )
+        );
+
+        Parent root = loader.load();
+
+        AssignmentDetailsController controller =
+                loader.getController();
+
+        controller.setAssignment(assignment);
+
+        Stage stage = (Stage)
+                ((Node) event.getSource())
+                        .getScene()
+                        .getWindow();
+
+        stage.setScene(
+                new Scene(root, 1000, 700)
+        );
+
+        stage.setTitle("EarlyBird - Assignment Details");
+        stage.show();
     }
 
     @FXML
@@ -115,7 +162,6 @@ public class AssignmentController {
             stage.show();
 
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }

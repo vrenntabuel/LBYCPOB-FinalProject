@@ -15,7 +15,7 @@
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AddAssignmentController"
         prefWidth="1000.0"
-        prefHeight="700.0">
+        prefHeight="700.0" style="-fx-background-color: #FFF8E7;">
 
     <!-- NAVIGATION -->
 
@@ -37,44 +37,44 @@
 
         <Label
                 text="New Assignment"
-                style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                style="-fx-font-size: 32px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
-        <Label text="Title"/>
+        <Label text="Title" style="-fx-text-fill: #29251D;"/>
 
         <TextField
                 fx:id="titleField"
-                promptText="Enter assignment title"/>
+                promptText="Enter assignment title" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
-        <Label text="Subject"/>
+        <Label text="Subject" style="-fx-text-fill: #29251D;"/>
 
         <TextField
                 fx:id="subjectField"
-                promptText="Enter subject"/>
+                promptText="Enter subject" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
-        <Label text="Due Date"/>
+        <Label text="Due Date" style="-fx-text-fill: #29251D;"/>
 
         <DatePicker
-                fx:id="dueDatePicker"/>
+                fx:id="dueDatePicker" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
-        <Label text="Estimated Duration"/>
+        <Label text="Estimated Duration" style="-fx-text-fill: #29251D;"/>
 
         <TextField
                 fx:id="durationField"
-                promptText="Hours"/>
+                promptText="Hours" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
-        <Label text="Priority"/>
+        <Label text="Priority" style="-fx-text-fill: #29251D;"/>
 
         <ComboBox
                 fx:id="priorityComboBox"
                 promptText="Select priority"
-                prefWidth="160"/>
+                prefWidth="160" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
-        <Label text="Description (optional)"/>
+        <Label text="Description (optional)" style="-fx-text-fill: #29251D;"/>
 
         <TextArea
                 fx:id="descriptionField"
                 promptText="Enter description"
-                prefHeight="100"/>
+                prefHeight="100" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-radius: 7; -fx-background-radius: 7;"/>
 
         <HBox spacing="15">
 
@@ -82,13 +82,13 @@
                     text="Add Assignment"
                     onAction="#handleAddAssignment"
                     prefWidth="180"
-                    prefHeight="45"/>
+                    prefHeight="45" style="-fx-background-color: #F4C542; -fx-text-fill: #29251D; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 
             <Button
                     text="Cancel"
                     onAction="#handleCancel"
                     prefWidth="120"
-                    prefHeight="45"/>
+                    prefHeight="45" style="-fx-background-color: #FFFDF7; -fx-text-fill: #29251D; -fx-border-color: #E5D6B3; -fx-border-width: 1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 
         </HBox>
 

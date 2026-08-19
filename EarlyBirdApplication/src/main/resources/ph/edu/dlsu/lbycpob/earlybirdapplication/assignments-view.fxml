@@ -12,7 +12,7 @@
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="ph.edu.dlsu.lbycpob.earlybirdapplication.controller.AssignmentController"
         prefWidth="1000.0"
-        prefHeight="700.0">
+        prefHeight="700.0" style="-fx-background-color: #FFF8E7;">
 
     <VBox
             spacing="20"
@@ -43,21 +43,21 @@
 
             <Label
                     text="EarlyBird"
-                    style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                    style="-fx-font-size: 32px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
             <Label
                     text="My Assignments"
-                    style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+                    style="-fx-font-size: 26px; -fx-font-weight: bold;; -fx-text-fill: #29251D;"/>
 
             <Button
                     text="+ Add Assignment"
                     onAction="#handleAddAssignment"
                     prefWidth="180"
-                    prefHeight="40"/>
+                    prefHeight="40" style="-fx-background-color: #F4C542; -fx-text-fill: #29251D; -fx-border-color: transparent; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand;"/>
 
             <ScrollPane
                     fitToWidth="true"
-                    VBox.vgrow="ALWAYS">
+                    VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: transparent;">
 
                 <content>
 
